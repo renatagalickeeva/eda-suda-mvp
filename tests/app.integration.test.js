@@ -3,6 +3,22 @@ const request = require('supertest'); //библиотека для тестир
 const app = require('../app');
 
 describe('App Integration Tests', () => {
+  let server;
+
+  // Запускаем сервер перед всеми тестами
+  beforeAll((done) => {
+    server = app.listen(0, done); // 0 = случайный порт
+  });
+
+  // Закрываем сервер после всех тестов
+  afterAll((done) => {
+    if (server) {
+      server.close(done);
+    } else {
+      done();
+    }
+  });
+
   // Тест 1: Главная страница
   test('GET / should return home page', async () => {
     const response = await request(app).get('/');
@@ -12,7 +28,7 @@ describe('App Integration Tests', () => {
   });
 
   // Тест 2: Страница меню
-  test('GET /menu should return menu page', async () => {
+  test('GET / menu should return menu page', async () => {
     const response = await request(app).get('/menu');
     
     expect(response.status).toBe(200);
