@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Еда-сюда</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .cart-item { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .item-info { flex-grow: 1; }
+        .remove-btn { 
+            background: #dc3545; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            border-radius: 3px; 
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        .remove-btn:hover { background: #c82333; }
+        .nav { margin: 20px 0; }
+        .nav a { 
+            margin-right: 15px; 
+            text-decoration: none; 
+            color: #007bff; 
+        }
+        .empty-cart { color: #666; font-style: italic; }
+        .total { 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            margin: 20px 0; 
+            color: #28a745;
+        }
+        .actions { margin: 20px 0; }
+        .clear-btn { 
+            background: #6c757d; 
+            color: white; 
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+        .clear-btn:hover { background: #5a6268; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/"> Главная</a>
+        <a href="/menu"> Меню</a>
+    </div>
+
+    <h1>🛒 Ваша корзина</h1>
+    <div id="cart-content">
+        <p class="empty-cart">Корзина пуста</p>
+    </div>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContent = document.getElementById('cart-content');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<p class="empty-cart">Корзина пуста</p>';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                html += `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <h3>${item.name}</h3>
+                            <p>💰 Цена: ${item.price} руб.</p>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">
+                            🗑️ Удалить
+                        </button>
+                    </div>
+                `;
+                total += item.price;
+            });
+
+            html += `
+                <div class="total">💰 Итого: ${total} руб.</div>
+                <div class="actions">
+                    <button class="clear-btn" onclick="clearCart()">
+                        🗑️ Очистить всю корзину
+                    </button>
+                </div>
+            `;
+            
+            cartContent.innerHTML = html;
+        }
+
+       
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (index >= 0 && index < cart.length) {
+                const removedItem = cart[index];
+                cart.splice(index, 1); 
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`"${removedItem.name}" удален из корзины!`);
+                loadCart(); 
+            }
+        }
+
+      
+        function clearCart() {
+            if (confirm('Вы уверены, что хотите очистить всю корзину?')) {
+                localStorage.removeItem('cart');
+                loadCart();
+            }
+        }
+
+
+        loadCart();
+    </script>
+</body>
+</html>

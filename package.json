@@ -1,0 +1,30 @@
+{
+  "name": "eda-suda-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  },
+   "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "jest",
+     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  }
+}
+

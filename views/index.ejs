@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Еда-сюда</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('/images/background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
+    
+    /* Затемнение фона для лучшей читаемости текста */
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Черный с прозрачностью 40% */
+        z-index: -1;
+    }
+    
+    .app-title {
+        margin-bottom: 50px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .app-title h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    
+    .nav {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .nav a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 30px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        transition: background 0.3s;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .nav a:hover {
+        background: rgba(255,255,255,0.3);
+    }
+</style>
+</head>
+<body>
+    <div class="app-title">
+        <h1> Еда-сюда</h1>
+        <p>Доставка вкусной еды прямо к вам!</p>
+    </div>
+    
+    <div class="nav">
+        <a href="/menu"> Меню</a>
+        <a href="/cart"> Корзина</a>
+    </div>
+</body>
+</html>
