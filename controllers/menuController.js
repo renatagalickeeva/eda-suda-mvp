@@ -8,7 +8,7 @@ exports.getMenu = (req, res) => {
 exports.getDishById = (req, res) => {
   const dish = Dish.findById(req.params.id);
   if (!dish) {
-    return res.status(404).json({ error: 'Блюдо не найдено' });
+    return res.status(500).json({ error: 'Блюдо не найдено' });
   }
   res.json(dish);
-};
+}; 

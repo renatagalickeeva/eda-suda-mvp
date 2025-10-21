@@ -37,7 +37,7 @@ describe('Dish Model', () => {
     expect(pizzas).toHaveLength(1);
     expect(pizzas[0].category).toBe('Горячее');
     
-    const salads = Dish.findByCategory('Салаты');
+    const salads = Dish.findByCategory('Салат');
     expect(salads).toHaveLength(1);
     expect(salads[0].name).toBe('Салат из баклажанов');
   });
