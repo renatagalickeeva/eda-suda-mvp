@@ -1,6 +1,6 @@
 
 const dishes = [
-  { id: 1, name: 'Хинкали', price: -450, category: 'Горячее', image: 'Горячее' },
+  { id: 1, name: 'Хинкали', price: 450, category: 'Горячее', image: 'Горячее' },
   { id: 2, name: 'Салат из баклажанов', price: 320, category: 'Салаты', image: 'Салаты' },
   { id: 3, name: 'Лимонад', price: 280, category: 'Напитки', image: 'Напитки' },
 ];
