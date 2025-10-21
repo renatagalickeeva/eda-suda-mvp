@@ -61,7 +61,7 @@ describe('Cart Functionality', () => {
     localStorage.setItem('cart', JSON.stringify(cart));
     
     // Удаляем второй товар (индекс 1)
-    cart.splice(0, 1);
+    cart.splice(1, 1);
     localStorage.setItem('cart', JSON.stringify(cart));
     
     const updatedCart = JSON.parse(localStorage.getItem('cart'));
